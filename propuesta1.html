@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="terracotta">
+  <title>Pizzería Vía Veneto | Tradición Artesanal y Terraza al Aire Libre en La Paz, Puebla</title>
+  
+  <!-- Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Pizzería Vía Veneto",
+    "image": "https://viaveneto.com/logo.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Teziutlán Norte 46, esquina con Calle Tecamachalco",
+      "addressLocality": "Heroica Puebla de Zaragoza",
+      "addressRegion": "PUE",
+      "postalCode": "72160",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.055741,
+      "longitude": -98.230202
+    },
+    "telephone": "+522222483097",
+    "servesCuisine": ["Italian", "Pizza", "Pasta", "Ensaladas"],
+    "priceRange": "$200 - $300 MXN",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "13:30",
+        "closes": "23:00"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces - Terracotta style */
+      --background: #f9f3eb;               /* warm tadelakt plaster */
+      --surface-container-low: #f3e9dc;    /* courtyard sand */
+      --surface-container: #ede0d0;        /* deeper plaster band */
+      --surface-container-high: #e4d4c0;   /* active states and wells */
+      --surface-card: #fcf8f2;             /* light plaster surface */
+
+      /* Ink */
+      --on-surface: #261b15;               /* cedarwood espresso */
+      --on-surface-variant: #57483f;       /* warm clay-taupe */
+
+      /* Borders */
+      --outline: #9e8a78;                  /* warm brass-taupe */
+      --outline-variant: #dfd0be;          /* pale plaster rule */
+
+      /* Accents */
+      --primary: #b84a24;                  /* burnt terracotta */
+      --on-primary: #ffffff;
+      --primary-container: #f7ebe0;        /* sunlit terracotta wash */
+      --on-primary-container: #7d2e12;     /* deep kiln terracotta */
+      --secondary: #8f6524;                /* burnished brass */
+      --tertiary: #1d6356;                 /* zellige courtyard emerald */
+      --tertiary-container: #e1efe9;       /* pale zellige wash */
+      --on-tertiary-container: #13473d;
+      --error: #b82929;
+      --on-error: #ffffff;
+
+      /* Shared semantic tokens */
+      --positive: #1d6356;
+      --warning: #b5893e;
+      --focus: #b84a24;
+
+      /* Data series */
+      --data-1: #b84a24;
+      --data-2: #1d6356;
+      --data-3: #b5893e;
+      --data-4: #8c3838;
+      --data-context: #a39384;
+
+      /* Fonts */
+      --font-headline: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-label: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      /* Shape */
+      --rounded: 0.375rem;                 /* 6px standard */
+      --rounded-lg: 0.75rem;               /* 12px panel */
+      --rounded-arch: 28px 28px 6px 6px;   /* signature riad arch */
+      --rounded-full: 9999px;
+
+      /* Effects */
+      --soft-shadow: 0 4px 18px rgb(38 27 21 / 0.04);
+      --soft-shadow-raised: 0 8px 28px rgb(38 27 21 / 0.08);
+      --warm-hairline: 1px solid var(--outline-variant);
+      --brass-gradient: linear-gradient(90deg, #d8c3b0, #b5893e, #d8c3b0);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+
+      /* Narrative Typography scale */
+      --display-size: clamp(2.4rem, 1.4rem + 3.5vw, 4.25rem);
+      --headline-size: clamp(1.75rem, 1.25rem + 1.8vw, 2.6rem);
+      --subhead-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.5rem);
+      --body-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+      --label-size: clamp(0.72rem, 0.69rem + 0.12vw, 0.8125rem);
+    }
+
+    /* Base reset -- required on every artifact */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: clip; margin: 0; padding: 0; }
+    header { position: static !important; }
+
+    body {
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Accessibility */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Headings & Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-headline);
+      color: var(--on-surface);
+      margin: 0;
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: var(--display-size);
+      letter-spacing: -0.01em;
+    }
+
+    h1 em, h1 i, h2 em, h2 i {
+      font-style: italic;
+      color: var(--primary);
+    }
+
+    h2 {
+      font-size: var(--headline-size);
+      letter-spacing: -0.005em;
+    }
+
+    h3 {
+      font-size: var(--subhead-size);
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: var(--space-md);
+      color: var(--on-surface-variant);
+      max-width: 68ch;
+    }
+
+    /* Labels & Kicker */
+    .kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--primary);
+      display: inline-block;
+      margin-bottom: var(--space-xs);
+    }
+
+    .kicker-brass {
+      color: var(--secondary);
+    }
+
+    /* Brass Diamond Ornamental Divider */
+    .ornament-rule {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-block: var(--space-lg);
+      color: var(--secondary);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .ornament-rule::before,
+    .ornament-rule::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--brass-gradient);
+    }
+
+    /* Terracotta Arch Cards */
+    .arch-card {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-arch);
+      padding: var(--space-lg) var(--space-md) var(--space-md);
+      text-align: center;
+      box-shadow: var(--soft-shadow);
+      transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+    .arch-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--soft-shadow-raised);
+    }
+    .arch-card.is-featured {
+      background: var(--primary-container);
+      border-color: #c98a6b;
+    }
+    .arch-card-label {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--on-surface-variant);
+      display: block;
+      margin-bottom: var(--space-xs);
+    }
+    .arch-card-figure {
+      font-family: var(--font-headline);
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--on-surface);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+    .arch-card-caption {
+      font-size: 0.8125rem;
+      color: var(--tertiary);
+      font-weight: 500;
+      margin: 0;
+    }
+
+    /* Zellige Emerald Badges */
+    .badge-emerald {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+      border: 1px solid #b5d6c9;
+      padding: 4px 12px;
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-terracotta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+      border: 1px solid #dfa283;
+      padding: 4px 12px;
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+      border: 1px solid transparent;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+      box-shadow: 0 2px 8px rgb(184 74 36 / 0.25);
+    }
+    .btn-primary:hover {
+      background-color: #9f3e1d;
+      box-shadow: 0 4px 14px rgb(184 74 36 / 0.35);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid #c4b29e;
+      color: var(--on-surface);
+    }
+    .btn-secondary:hover {
+      background-color: var(--surface-container-low);
+      border-color: var(--outline);
+    }
+
+    .btn-emerald {
+      background-color: var(--tertiary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgb(29 99 86 / 0.2);
+    }
+    .btn-emerald:hover {
+      background-color: #154e43;
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.75rem;
+      min-height: 36px;
+    }
+
+    /* Header & Navigation Bar */
+    .site-header {
+      background: var(--surface-container-low);
+      border-bottom: 1px solid var(--outline-variant);
+      padding: var(--space-md) var(--space-lg);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      text-decoration: none;
+      color: var(--on-surface);
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: var(--rounded-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-headline);
+      font-size: 1.4rem;
+      font-weight: 700;
+      box-shadow: var(--soft-shadow);
+      flex-shrink: 0;
+    }
+    .brand-title {
+      font-family: var(--font-headline);
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .brand-sub {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-top: 3px;
+      display: block;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-link {
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--on-surface);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      transition: color var(--dur-micro) var(--ease-out), background-color var(--dur-micro) var(--ease-out);
+    }
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: var(--surface-container);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    /* Cart counter in header */
+    .cart-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-full);
+      padding: 6px 14px;
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--on-surface);
+      cursor: pointer;
+      transition: border-color var(--dur-micro) var(--ease-out);
+    }
+    .cart-indicator:hover {
+      border-color: var(--primary);
+    }
+    .cart-count-badge {
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: var(--rounded-full);
+      padding: 1px 7px;
+      font-size: 0.75rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+    .hero-lead {
+      font-size: var(--subhead-size);
+      color: var(--on-surface-variant);
+      line-height: 1.5;
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      align-items: center;
+    }
+    .hero-illustration {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: 36px 36px var(--rounded-lg) var(--rounded-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--soft-shadow);
+      position: relative;
+    }
+
+    /* Section Styling */
+    .section-band {
+      background: var(--surface-container);
+      padding: var(--space-2xl) 0;
+      margin-inline: calc(var(--space-lg) * -1);
+      padding-inline: var(--space-lg);
+      border-top: 1px solid var(--outline-variant);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .section-band .page-grid-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-xl);
+      text-align: left;
+    }
+    .section-header.text-center {
+      text-align: center;
+    }
+    .section-header.text-center p {
+      margin-inline: auto;
+    }
+
+    /* Arch Metric Tiles Row */
+    .metric-tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+
+    /* Story / Nosotros Grid */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .story-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+    .feature-card {
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      box-shadow: var(--soft-shadow);
+    }
+    .feature-card h4 {
+      font-size: 1.15rem;
+      margin-top: var(--space-xs);
+      margin-bottom: var(--space-xs);
+    }
+    .feature-card p {
+      font-size: 0.875rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Interactive Menu Section */
+    .menu-controls {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+    .menu-search-row {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search-input-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline);
+      border-radius: var(--rounded-full);
+      padding: 0.75rem 1rem 0.75rem 2.6rem;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--on-surface);
+      transition: border-color var(--dur-micro) var(--ease-out);
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+    .search-icon-pos {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--on-surface-variant);
+      pointer-events: none;
+    }
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+    .category-pill {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      color: var(--on-surface-variant);
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.45rem 1rem;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      transition: all var(--dur-micro) var(--ease-out);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .category-pill:hover {
+      background: var(--surface-container-high);
+      color: var(--on-surface);
+    }
+    .category-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Menu Cards Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .menu-item-card {
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+      position: relative;
+    }
+    .menu-item-card:hover {
+      border-color: var(--outline);
+      transform: translateY(-2px);
+    }
+    .menu-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xs);
+    }
+    .menu-item-title {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--on-surface);
+      margin: 0;
+    }
+    .menu-item-price {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    .menu-item-desc {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      margin-bottom: var(--space-md);
+      line-height: 1.5;
+    }
+    .menu-item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: var(--space-md);
+    }
+    .item-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+    }
+    .item-tag.tag-special {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .item-tag.tag-veggie {
+      background: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+    }
+    .menu-item-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--outline-variant);
+      padding-top: var(--space-sm);
+      margin-top: auto;
+    }
+
+    /* Comanda / Order Drawer (Off-canvas) */
+    .order-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgb(38 27 21 / 0.55);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-long) var(--ease-out);
+    }
+    .order-drawer-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .order-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(460px, 100%);
+      background: var(--surface-card);
+      box-shadow: -4px 0 24px rgb(38 27 21 / 0.15);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform var(--dur-long) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .order-drawer.is-open {
+      transform: translateX(0);
+    }
+    .drawer-header {
+      background: var(--surface-container-low);
+      padding: var(--space-md) var(--space-lg);
+      border-bottom: 1px solid var(--outline-variant);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .drawer-body {
+      padding: var(--space-md) var(--space-lg);
+      overflow-y: auto;
+      flex: 1;
+    }
+    .drawer-footer {
+      background: var(--surface-container-low);
+      padding: var(--space-md) var(--space-lg);
+      border-top: 1px solid var(--outline-variant);
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--outline-variant);
+      gap: var(--space-sm);
+    }
+    .cart-item-info {
+      flex: 1;
+    }
+    .cart-item-title {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      margin: 0;
+    }
+    .cart-item-price {
+      font-size: 0.8125rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline);
+      background: var(--surface-card);
+      color: var(--on-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .qty-btn:hover {
+      background: var(--surface-container);
+    }
+    .qty-count {
+      min-width: 20px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    /* Terrace Experience Module */
+    .terrace-experience-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+    .gallery-viewer {
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+    }
+    .gallery-display {
+      position: relative;
+      background: #2b1f19;
+      height: 340px;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-lg);
+      color: #ffffff;
+    }
+    .gallery-caption {
+      position: relative;
+      z-index: 2;
+    }
+    .gallery-caption h4 {
+      font-size: 1.5rem;
+      color: #f7ebe0;
+      margin-bottom: var(--space-xs);
+    }
+    .gallery-caption p {
+      font-size: 0.875rem;
+      color: #dfd0be;
+      margin: 0;
+    }
+    .gallery-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xs);
+      padding: var(--space-sm);
+      background: var(--surface-container-low);
+    }
+    .gallery-thumb-btn {
+      background: transparent;
+      border: 2px solid transparent;
+      border-radius: var(--rounded);
+      padding: var(--space-xs);
+      cursor: pointer;
+      font-family: var(--font-label);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      text-align: center;
+      transition: all var(--dur-micro) var(--ease-out);
+    }
+    .gallery-thumb-btn.active {
+      border-color: var(--primary);
+      background: var(--surface-card);
+      color: var(--primary);
+    }
+
+    /* Reservation Form */
+    .reservation-card {
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--soft-shadow);
+    }
+    .form-group {
+      margin-bottom: var(--space-md);
+    }
+    .form-label {
+      display: block;
+      font-family: var(--font-label);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--on-surface);
+      margin-bottom: var(--space-xs);
+    }
+    .form-control {
+      width: 100%;
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded);
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--on-surface);
+      transition: border-color var(--dur-micro) var(--ease-out);
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    /* Map & Location Section */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-xl);
+      align-items: stretch;
+    }
+    .location-details-card {
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--soft-shadow);
+    }
+    .contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--rounded-full);
+      background: var(--primary-container);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-text strong {
+      display: block;
+      color: var(--on-surface);
+      font-size: 0.9375rem;
+    }
+    .contact-text span, .contact-text a {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      text-decoration: none;
+    }
+    .contact-text a:hover {
+      color: var(--primary);
+    }
+
+    /* Cartographic Schematic Map */
+    .schematic-map-container {
+      background-color: #f4efe6;
+      background-image:
+        linear-gradient(rgba(122, 46, 18, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122, 46, 18, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      position: relative;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+    }
+    .map-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface-card);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      box-shadow: var(--soft-shadow);
+      z-index: 3;
+    }
+    .map-svg-canvas {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      margin-block: var(--space-sm);
+    }
+    .route-selector-tabs {
+      display: flex;
+      gap: var(--space-xs);
+      background: var(--surface-card);
+      padding: 4px;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline-variant);
+      z-index: 3;
+    }
+    .route-tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 6px 10px;
+      font-family: var(--font-label);
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: var(--rounded-full);
+      cursor: pointer;
+      color: var(--on-surface-variant);
+      transition: all var(--dur-micro) var(--ease-out);
+      text-align: center;
+    }
+    .route-tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Floating Mobile Bottom Action Bar */
+    .mobile-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(243, 233, 220, 0.94);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--outline-variant);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: var(--space-sm);
+      z-index: 900;
+      box-shadow: 0 -4px 16px rgb(38 27 21 / 0.08);
+    }
+    .mobile-bar-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 6px 4px;
+      border-radius: var(--rounded);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      min-height: 44px;
+      gap: 2px;
+    }
+    .mobile-bar-btn.btn-cta {
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: var(--rounded-full);
+      padding: 8px 12px;
+      flex: 1.4;
+      flex-direction: row;
+      gap: var(--space-xs);
+      font-size: 0.75rem;
+    }
+
+    /* Modal for Quick Direct WhatsApp Message & Phone */
+    .custom-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgb(38 27 21 / 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 1100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-md);
+    }
+    .custom-modal-backdrop.is-active {
+      display: flex;
+    }
+    .custom-modal-card {
+      background: var(--surface-card);
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--rounded-lg);
+      width: min(520px, 100%);
+      padding: var(--space-xl);
+      box-shadow: var(--soft-shadow-raised);
+      position: relative;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    /* Toast Notification */
+    .toast-pill {
+      position: fixed;
+      bottom: 74px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--on-surface);
+      color: var(--background);
+      padding: 8px 18px;
+      border-radius: var(--rounded-full);
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      z-index: 1200;
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--dur-short) var(--ease-out);
+      box-shadow: 0 4px 14px rgb(0 0 0 / 0.2);
+    }
+    .toast-pill.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--surface-container-low);
+      border-top: 1px solid var(--outline-variant);
+      padding: var(--space-2xl) var(--space-lg) calc(var(--space-3xl) + 20px);
+      margin-top: var(--space-2xl);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: var(--space-xl);
+    }
+    .footer-col h5 {
+      font-family: var(--font-headline);
+      font-size: 1.25rem;
+      color: var(--on-surface);
+      margin-top: 0;
+      margin-bottom: var(--space-md);
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .footer-links a {
+      color: var(--on-surface-variant);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+      .hero-grid, .story-grid, .terrace-experience-grid, .location-grid, .footer-inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .header-actions {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-lg);
+      }
+      .section-band {
+        padding-inline: var(--space-sm);
+      }
+      .form-row, .story-features {
+        grid-template-columns: 1fr;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        width: 100%;
+      }
+      .arch-card-figure {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header con Navegación Fluida y Branding Oficial -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand-group">
+        <div class="brand-mark" aria-hidden="true">VV</div>
+        <div>
+          <h1 class="brand-title">Pizzería Vía Veneto</h1>
+          <span class="brand-sub">Colonia La Paz • Puebla • dal 1995</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#menu" class="nav-link">Menú Digital</a></li>
+          <li><a href="#terraza" class="nav-link">Experiencia Terraza</a></li>
+          <li><a href="#historia" class="nav-link">Historia dal 1995</a></li>
+          <li><a href="#reservas" class="nav-link">Reservaciones</a></li>
+          <li><a href="#contacto" class="nav-link">Ubicación</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="cart-indicator" onclick="toggleOrderDrawer()" aria-label="Ver pedido actual">
+          <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+          <span>Comanda</span>
+          <span id="headerCartCount" class="cart-count-badge">0</span>
+        </button>
+        <a href="#reservas" class="btn btn-primary btn-sm">Reservar Mesa</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-grid">
+
+    <!-- 2. Hero Section: Tradición Artesanal y Experiencia al Aire Libre -->
+    <section id="hero" class="hero-section">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">COLONIA LA PAZ, PUEBLA • DESDE 1995</span>
+          <h1>Pizzería Vía Veneto: La auténtica tradición artesanal se disfruta <em>al aire libre</em>.</h1>
+          <p class="hero-lead">
+            Más de tres décadas preparando pizza de masa delgada y crujiente al horno, pastas hechas con esmero y recetas tradicionales italianas. Un entrañable punto de encuentro en Avenida Teziutlán Norte para deleitarse bajo el cielo de La Paz.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#menu" class="btn btn-primary">
+              <i data-lucide="utensils-crossed" style="width: 18px; height: 18px;"></i>
+              <span>Explorar Menú Completo</span>
+            </a>
+            <a href="#reservas" class="btn btn-secondary">
+              <i data-lucide="calendar" style="width: 18px; height: 18px;"></i>
+              <span>Reservar en Terraza</span>
+            </a>
+            <button type="button" class="btn btn-emerald" onclick="openWhatsAppDirectModal()">
+              <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+              <span>WhatsApp Directo: 221 368 5627</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Visual Element: Terraza & Pizza Artesanal -->
+        <div class="hero-illustration">
+          <div style="background: linear-gradient(145deg, #ede0d0, #fcf8f2); border-radius: 24px; padding: var(--space-lg); border: 1px solid var(--outline-variant); text-align: center;">
+            <svg viewBox="0 0 340 220" style="width: 100%; height: auto; max-height: 200px; display: block; margin: 0 auto;" aria-hidden="true">
+              <!-- Terraza al aire libre y horno de piedra -->
+              <rect x="10" y="10" width="320" height="200" rx="16" fill="#f3e9dc" stroke="#dfd0be" stroke-width="1.5" />
+              <!-- Guirnalda de luces nocturnas de terraza -->
+              <path d="M 30,30 Q 100,55 170,30 Q 240,55 310,30" fill="none" stroke="#8f6524" stroke-width="1.5" stroke-dasharray="2 3"/>
+              <circle cx="65" cy="42" r="5" fill="#b5893e" />
+              <circle cx="100" cy="46" r="5" fill="#b5893e" />
+              <circle cx="135" cy="42" r="5" fill="#b5893e" />
+              <circle cx="205" cy="42" r="5" fill="#b5893e" />
+              <circle cx="240" cy="46" r="5" fill="#b5893e" />
+              <circle cx="275" cy="42" r="5" fill="#b5893e" />
+              <!-- Mesa de madera en terraza -->
+              <ellipse cx="170" cy="140" rx="90" ry="38" fill="#dfd0be" stroke="#9e8a78" stroke-width="2" />
+              <!-- Plato con pizza dorada rebanada -->
+              <circle cx="170" cy="138" r="30" fill="#e48545" stroke="#b84a24" stroke-width="2.5" />
+              <circle cx="170" cy="138" r="26" fill="#f4caa1" />
+              <!-- Detalles de pizza: albahaca y rodajas -->
+              <circle cx="162" cy="132" r="3" fill="#8c3838" />
+              <circle cx="178" cy="134" r="3.5" fill="#8c3838" />
+              <circle cx="170" cy="145" r="3" fill="#8c3838" />
+              <path d="M 166,136 Q 169,132 173,135 Q 170,140 166,136" fill="#1d6356" />
+              <path d="M 174,142 Q 177,138 180,143 Q 176,146 174,142" fill="#1d6356" />
+              <!-- Copas de vino en mesa -->
+              <path d="M 95,120 L 105,120 L 100,132 L 100,140 M 96,140 L 104,140" stroke="#b84a24" stroke-width="1.8" fill="none" />
+              <path d="M 96,122 Q 100,126 104,122 Z" fill="#8c3838" opacity="0.7"/>
+              <path d="M 235,120 L 245,120 L 240,132 L 240,140 M 236,140 L 244,140" stroke="#b84a24" stroke-width="1.8" fill="none" />
+              <path d="M 236,122 Q 240,126 244,122 Z" fill="#8c3838" opacity="0.7"/>
+              <!-- Sombrilla de terraza en fondo -->
+              <path d="M 170,45 L 170,105 M 100,65 Q 170,30 240,65 Z" fill="#e1efe9" stroke="#1d6356" stroke-width="1.5" />
+            </svg>
+            <div style="margin-top: var(--space-md); display: flex; align-items: center; justify-content: space-around; font-family: var(--font-label); font-size: 0.75rem; font-weight: 700; color: var(--on-surface-variant);">
+              <span><i data-lucide="sun" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px; color: var(--secondary);"></i> Asientos al Aire Libre</span>
+              <span><i data-lucide="flame" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px; color: var(--primary);"></i> Horno Tradicional</span>
+              <span><i data-lucide="shield-check" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px; color: var(--tertiary);"></i> Servicio Directo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brass Diamond Divider -->
+      <div class="ornament-rule">◆ ASSOLUTAMENTE DELIZIOSO — DAL 1995 ◆</div>
+
+      <!-- 4 Arch Metric / Feature Tiles -->
+      <div class="metric-tiles-grid">
+        <div class="arch-card">
+          <span class="arch-card-label">Tradición en La Paz</span>
+          <div class="arch-card-figure">30+</div>
+          <p class="arch-card-caption">Años de historia culinaria (dal 1995)</p>
+        </div>
+
+        <div class="arch-card is-featured">
+          <span class="arch-card-label">Experiencia Única</span>
+          <div class="arch-card-figure">Terraza</div>
+          <p class="arch-card-caption" style="color: var(--on-primary-container);">Ambiente al aire libre y veladas cálidas</p>
+        </div>
+
+        <div class="arch-card">
+          <span class="arch-card-label">Especialidades</span>
+          <div class="arch-card-figure">28+</div>
+          <p class="arch-card-caption">Variedades de pizza artesanal y pastas</p>
+        </div>
+
+        <div class="arch-card">
+          <span class="arch-card-label">Preferencia Local</span>
+          <div class="arch-card-figure">4.6 ★</div>
+          <p class="arch-card-caption">Más de 935 comensales nos recomiendan</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Sección Completa 'Nosotros / Historia desde 1995' -->
+    <section id="historia" class="section-band">
+      <div class="page-grid-inner">
+        <div class="story-grid">
+          <div>
+            <span class="kicker">NUESTRA HERENCIA CULINARIA</span>
+            <h2>Treinta Años de Auténtica Pasión, Masa Crujiente y <em>Barrio</em></h2>
+            <p>
+              En 1995, sobre la arbolada y tranquila Avenida Teziutlán Norte en la Colonia La Paz, Pizzería Vía Veneto abrió sus puertas con una premisa inquebrantable: honrar el arte de la vera pizza italiana adaptada con calidez para las familias poblanas.
+            </p>
+            <p>
+              Lejos de la producción en serie de las grandes cadenas comerciales, cada una de nuestras recetas se elabora artesanalmente al momento. Nuestra masa —fina, ligera y de orillas crujientes— fermenta con calma para lograr una digestión amable y ese tostado característico que solo el horneado tradicional concede.
+            </p>
+            <p>
+              A lo largo de las décadas, Vía Veneto se ha consolidado como un entrañable refugio gastronómico. Aquí se han celebrado primeras citas que hoy son matrimonios consolidados, comidas dominicales de varias generaciones y tertulias memorables entre amigos disfrutando de una jarra de clericot y una pizza Giuliana al caer la tarde.
+            </p>
+            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-md); align-items: center;">
+              <span class="badge-emerald">100% Hecho a Mano</span>
+              <span class="badge-terracotta">Sin Comisiones de Terceros</span>
+            </div>
+          </div>
+
+          <!-- Feature Cards Grid -->
+          <div class="story-features">
+            <div class="feature-card">
+              <i data-lucide="sparkles" style="color: var(--primary); width: 24px; height: 24px;"></i>
+              <h4>Recetas Inolvidables</h4>
+              <p>Creaciones icónicas de autor como la <em>Giuliana</em> (higo, brie y serrano) o la monumental <em>Yamilone Mega Ovni</em> de doble costra con cuatro quesos.</p>
+            </div>
+
+            <div class="feature-card">
+              <i data-lucide="trees" style="color: var(--tertiary); width: 24px; height: 24px;"></i>
+              <h4>Terraza Abierta</h4>
+              <p>Disfruta de la frescura vespertina de La Paz en nuestra área de mesas al aire libre con iluminación cálida y atmósfera distendida.</p>
+            </div>
+
+            <div class="feature-card">
+              <i data-lucide="wheat" style="color: var(--secondary); width: 24px; height: 24px;"></i>
+              <h4>Ingredientes Nobles</h4>
+              <p>Quesos brie y cabra seleccionados, jamón serrano legítimo, albahaca fresca y aceite de oliva virgen extra en cada platillo.</p>
+            </div>
+
+            <div class="feature-card">
+              <i data-lucide="heart-handshake" style="color: var(--primary); width: 24px; height: 24px;"></i>
+              <h4>Trato Cercano</h4>
+              <p>Atención personalizada y familiar que te hace sentir en casa desde que cruzas la puerta hasta la última copa de limoncello o café.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Menú Digital Interactivo con Categorías Filtrables y Comanda Directa -->
+    <section id="menu">
+      <div class="section-header text-center">
+        <span class="kicker kicker-brass">IL NOSTRO MENU TRADIZIONALE</span>
+        <h2>Menú Digital <em>Interactivo</em></h2>
+        <p>Explora nuestras especialidades, filtra por ingredientes o antojo, y arma tu comanda para pedir directamente por WhatsApp sin intermediarios ni sobreprecios.</p>
+      </div>
+
+      <!-- Controls: Buscador y Filtros -->
+      <div class="menu-controls">
+        <div class="menu-search-row">
+          <div class="search-input-wrapper">
+            <i data-lucide="search" class="search-icon-pos" style="width: 18px; height: 18px;"></i>
+            <input type="text" id="menuSearchInput" class="search-input" placeholder="Buscar por platillo o ingrediente (ej. higo, serrano, salmón, brie, pesto)..." oninput="filterMenuItems()" aria-label="Buscar en el menú">
+          </div>
+          <div style="display: flex; gap: var(--space-xs); align-items: center;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="filterByTag('veggie')" id="tagBtnVeggie">🌱 Vegetarianas</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="filterByTag('especial')" id="tagBtnSpecial">⭐ Especialidad</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="resetFilters()">Mostrar Todo</button>
+          </div>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="category-pills" role="tablist" aria-label="Categorías del menú">
+          <button type="button" class="category-pill active" onclick="selectCategory('all', this)">Todo el Menú</button>
+          <button type="button" class="category-pill" onclick="selectCategory('meraviglie', this)">✨ Le Meraviglie (Especiales)</button>
+          <button type="button" class="category-pill" onclick="selectCategory('classiche', this)">🍕 Le Pizze Classiche</button>
+          <button type="button" class="category-pill" onclick="selectCategory('paste', this)">🍝 Le Paste Artigianali</button>
+          <button type="button" class="category-pill" onclick="selectCategory('insalate', this)">🥗 Insalate e Antipasti</button>
+          <button type="button" class="category-pill" onclick="selectCategory('dolci', this)">☕ I Dolci e I Nostri Caffè</button>
+          <button type="button" class="category-pill" onclick="selectCategory('bibite', this)">🍷 Bibite e Clericot</button>
+        </div>
+      </div>
+
+      <!-- Grid de Platillos -->
+      <div id="menuCardsGrid" class="menu-grid" aria-live="polite">
+        <!-- Generado dinámicamente con JavaScript desde el catálogo fiel de la pizzería -->
+      </div>
+
+      <!-- Floating Bar to Trigger Comanda -->
+      <div style="margin-top: var(--space-xl); background: var(--surface-container-low); border: 1px solid var(--outline-variant); border-radius: var(--rounded-lg); padding: var(--space-md) var(--space-lg); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md);">
+        <div>
+          <strong style="color: var(--on-surface); font-size: 1.05rem;">¿Deseas ordenar para llevar (Pick-up) o servicio a domicilio?</strong>
+          <p style="margin: 0; font-size: 0.875rem;">Haz clic en agregar a los platillos que desees y genera tu mensaje formateado directo a nuestro WhatsApp sin pagar comisiones extra.</p>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="toggleOrderDrawer()">
+          <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+          <span>Revisar mi Comanda (<span id="comandaBarTotal">$0 MXN</span>)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 5. Módulo de Experiencia en Terraza y Reserva Directa -->
+    <section id="terraza" class="section-band">
+      <div class="page-grid-inner">
+        <div class="section-header">
+          <span class="kicker">VIDA AL AIRE LIBRE EN AVENIDA TEZIUTLÁN NORTE</span>
+          <h2>La Experiencia de Terraza: <em>El Encanto de La Paz</em></h2>
+          <p>
+            Nuestras mesas al aire libre son el corazón de la experiencia Vía Veneto. Respira la tranquilidad de la colonia, rodeado de vegetación cuidada, iluminación de acento en tonos dorados y el inconfundible aroma del horno encendido.
+          </p>
+        </div>
+
+        <div class="terrace-experience-grid">
+          <!-- Galería Fotográfica Interactiva -->
+          <div>
+            <div class="gallery-viewer">
+              <div id="galleryDisplay" class="gallery-display">
+                <!-- SVG Canvas Dinámico de la Galería -->
+                <svg id="gallerySvgCanvas" viewBox="0 0 500 340" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" aria-hidden="true">
+                  <!-- Escena 1 por defecto: Atardecer en Terraza -->
+                  <defs>
+                    <linearGradient id="terraceSkyGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#4a2e22"/>
+                      <stop offset="60%" stop-color="#8f5030"/>
+                      <stop offset="100%" stop-color="#261b15"/>
+                    </linearGradient>
+                  </defs>
+                  <rect width="500" height="340" fill="url(#terraceSkyGrad)"/>
+                  <!-- Guirnaldas doradas y follaje -->
+                  <path d="M 0,40 Q 125,90 250,50 Q 375,90 500,45" fill="none" stroke="#d4a857" stroke-width="2"/>
+                  <circle cx="60" cy="65" r="7" fill="#fbd38d"/>
+                  <circle cx="130" cy="73" r="7" fill="#fbd38d"/>
+                  <circle cx="190" cy="62" r="7" fill="#fbd38d"/>
+                  <circle cx="310" cy="67" r="7" fill="#fbd38d"/>
+                  <circle cx="380" cy="74" r="7" fill="#fbd38d"/>
+                  <circle cx="440" cy="65" r="7" fill="#fbd38d"/>
+                  <!-- Macetas de plantas en terraza -->
+                  <rect x="30" y="220" width="40" height="60" rx="4" fill="#7d2e12"/>
+                  <path d="M 20,220 Q 50,150 80,220 Z" fill="#1d6356" opacity="0.9"/>
+                  <rect x="430" y="220" width="40" height="60" rx="4" fill="#7d2e12"/>
+                  <path d="M 420,220 Q 450,150 480,220 Z" fill="#1d6356" opacity="0.9"/>
+                  <!-- Mesas y sillas de hierro forjado y madera -->
+                  <rect x="150" y="240" width="200" height="15" rx="4" fill="#dfd0be"/>
+                  <rect x="240" y="255" width="20" height="85" fill="#57483f"/>
+                  <ellipse cx="250" cy="235" rx="60" ry="15" fill="#f7ebe0" stroke="#b84a24" stroke-width="2"/>
+                  <!-- Velita encendida y copas -->
+                  <rect x="245" y="215" width="10" height="18" rx="2" fill="#e4d4c0"/>
+                  <circle cx="250" cy="210" r="4" fill="#b5893e"/>
+                </svg>
+
+                <div class="gallery-caption">
+                  <span id="galleryTag" class="badge-emerald" style="margin-bottom: 6px;">Atardecer en La Paz</span>
+                  <h4 id="galleryTitle">Mesas al Aire Libre Bajo Cielo Poblano</h4>
+                  <p id="galleryDesc">El momento más cotizado del día: la transición de la tarde a la noche con clima fresco y luces tenues.</p>
+                </div>
+              </div>
+
+              <!-- Thumbnails Selector -->
+              <div class="gallery-thumbnails">
+                <button type="button" class="gallery-thumb-btn active" onclick="switchGallerySlide(0, this)">
+                  <i data-lucide="sunset" style="width: 16px; height: 16px; display: block; margin: 0 auto 4px;"></i>
+                  Atardecer Dorado
+                </button>
+                <button type="button" class="gallery-thumb-btn" onclick="switchGallerySlide(1, this)">
+                  <i data-lucide="moon" style="width: 16px; height: 16px; display: block; margin: 0 auto 4px;"></i>
+                  Noche Romántica
+                </button>
+                <button type="button" class="gallery-thumb-btn" onclick="switchGallerySlide(2, this)">
+                  <i data-lucide="flame" style="width: 16px; height: 16px; display: block; margin: 0 auto 4px;"></i>
+                  Horno & Masa
+                </button>
+                <button type="button" class="gallery-thumb-btn" onclick="switchGallerySlide(3, this)">
+                  <i data-lucide="users" style="width: 16px; height: 16px; display: block; margin: 0 auto 4px;"></i>
+                  Mesa Familiar
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--space-md); padding: var(--space-md); background: var(--surface-card); border-radius: var(--rounded-lg); border: 1px solid var(--outline-variant); font-size: 0.875rem;">
+              <p style="margin: 0; color: var(--on-surface-variant);">
+                <i data-lucide="info" style="width: 16px; height: 16px; color: var(--primary); display: inline-block; vertical-align: middle; margin-right: 6px;"></i>
+                <strong>Nota de comensal:</strong> La terraza exterior es <em>Pet-Friendly</em> con correa y cuenta con calefactores de gas para las noches frescas de invierno.
+              </p>
+            </div>
+          </div>
+
+          <!-- Formulario Interactivo de Reserva Directa (Sin Comisiones) -->
+          <div id="reservas" class="reservation-card">
+            <span class="kicker kicker-brass">RESERVACIÓN DIRECTA</span>
+            <h3 style="font-size: 1.6rem; margin-bottom: var(--space-xs);">Asegura tu Mesa en Terraza</h3>
+            <p style="font-size: 0.875rem; margin-bottom: var(--space-lg);">
+              Reserva sin intermediarios ni cargos sorpresa. Confirmación ágil directamente con el equipo de salón de Vía Veneto.
+            </p>
+
+            <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="resDate" class="form-label">Fecha de Visita</label>
+                  <input type="date" id="resDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="resTime" class="form-label">Horario Preferido</label>
+                  <select id="resTime" class="form-control" required>
+                    <option value="13:30">13:30 hrs (Apertura)</option>
+                    <option value="14:30">14:30 hrs</option>
+                    <option value="16:00">16:00 hrs</option>
+                    <option value="18:00">18:00 hrs</option>
+                    <option value="19:30">19:30 hrs (Atardecer)</option>
+                    <option value="20:30" selected>20:30 hrs (Cena estelar)</option>
+                    <option value="21:30">21:30 hrs</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="resGuests" class="form-label">Número de Comensales</label>
+                  <select id="resGuests" class="form-control" required>
+                    <option value="2 personas">2 personas (Pareja)</option>
+                    <option value="3-4 personas" selected>3 a 4 personas</option>
+                    <option value="5-8 personas">5 a 8 personas (Grupo)</option>
+                    <option value="9-15 personas">9 a 15 personas (Familiar)</option>
+                    <option value="+15 personas">+15 personas (Evento)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="resArea" class="form-label">Zona Preferida</label>
+                  <select id="resArea" class="form-control" required>
+                    <option value="Terraza al Aire Libre" selected>Terraza al Aire Libre (Av. Teziutlán)</option>
+                    <option value="Terraza Techada">Terraza Techada / Galería</option>
+                    <option value="Salón Interior Clásico">Salón Interior Tradicional</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="resName" class="form-label">Nombre del Titular</label>
+                  <input type="text" id="resName" class="form-control" placeholder="Ej. Familia Rodríguez" required>
+                </div>
+                <div class="form-group">
+                  <label for="resPhone" class="form-label">Teléfono / WhatsApp</label>
+                  <input type="tel" id="resPhone" class="form-control" placeholder="Ej. 222 123 4567" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="resOccasion" class="form-label">Ocasión o Comentario Especial (Opcional)</label>
+                <input type="text" id="resOccasion" class="form-control" placeholder="Ej. Aniversario, cumpleaños o mesa junto a las plantas">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-xs);">
+                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                <span>Solicitar Reservación Directa</span>
+              </button>
+            </form>
+
+            <div id="resConfirmationBox" style="display: none; margin-top: var(--space-md); padding: var(--space-md); background: var(--tertiary-container); border: 1px solid #b5d6c9; border-radius: var(--rounded); color: var(--on-tertiary-container);">
+              <!-- Renderizado dinámicamente -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Mapa de Ubicación y Datos de Contacto -->
+    <section id="contacto">
+      <div class="section-header text-center">
+        <span class="kicker">GEOLOCALIZACIÓN Y ENTORNO</span>
+        <h2>Encuéntranos en el Corazón de <em>La Paz</em></h2>
+        <p>Avenida Teziutlán Norte 46, esquina con Calle Tecamachalco, Colonia La Paz, C.P. 72160, Puebla, Pue. Fácil acceso y estacionamiento cómodo en calles aledañas.</p>
+      </div>
+
+      <div class="location-grid">
+        <!-- Tarjeta de Datos de Contacto -->
+        <div class="location-details-card">
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: var(--space-md);">Pizzería Vía Veneto</h3>
+            
+            <div class="contact-line">
+              <div class="contact-icon" aria-hidden="true"><i data-lucide="map-pin" style="width: 20px; height: 20px;"></i></div>
+              <div class="contact-text">
+                <strong>Dirección Oficial</strong>
+                <span>Av. Teziutlán Norte #46 (esq. Tecamachalco), Colonia La Paz, 72160 Puebla, Pue.</span>
+              </div>
+            </div>
+
+            <div class="contact-line">
+              <div class="contact-icon" aria-hidden="true"><i data-lucide="clock" style="width: 20px; height: 20px;"></i></div>
+              <div class="contact-text">
+                <strong>Horario de Servicio</strong>
+                <span>Lunes a Domingo: 13:30 hrs a 23:00 hrs</span>
+                <div style="margin-top: 4px;">
+                  <span class="badge-emerald">Abierto Hoy</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-line">
+              <div class="contact-icon" aria-hidden="true"><i data-lucide="phone" style="width: 20px; height: 20px;"></i></div>
+              <div class="contact-text">
+                <strong>Teléfono de Salón</strong>
+                <a href="tel:2222483097">(222) 248 3097</a>
+              </div>
+            </div>
+
+            <div class="contact-line">
+              <div class="contact-icon" aria-hidden="true"><i data-lucide="message-square" style="width: 20px; height: 20px;"></i></div>
+              <div class="contact-text">
+                <strong>WhatsApp Pedidos & Terraza</strong>
+                <span>+52 221 368 5627</span>
+              </div>
+            </div>
+
+            <div class="contact-line">
+              <div class="contact-icon" aria-hidden="true"><i data-lucide="credit-card" style="width: 20px; height: 20px;"></i></div>
+              <div class="contact-text">
+                <strong>Rango de Precios y Formas de Pago</strong>
+                <span>$200 - $300 MXN por persona • Efectivo y Tarjetas Visa, MC, AMEX</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid var(--outline-variant); padding-top: var(--space-md); margin-top: var(--space-md); display: flex; gap: var(--space-sm);">
+            <a href="tel:2222483097" class="btn btn-secondary btn-sm" style="flex: 1;">
+              <i data-lucide="phone-call" style="width: 16px; height: 16px;"></i>
+              <span>Llamar Ahora</span>
+            </a>
+            <button type="button" class="btn btn-primary btn-sm" onclick="copyAddressToClipboard()" style="flex: 1;">
+              <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+              <span>Copiar Dirección</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mapa Esquemático Interactivo (Pattern 8 de Cartografía Schemática) -->
+        <div class="schematic-map-container" aria-label="Mapa cartográfico esquemático de Colonia La Paz">
+          <div class="map-header-bar">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-family: var(--font-label); font-size: 0.75rem; font-weight: 700; color: var(--primary);">COLONIA LA PAZ</span>
+              <span style="font-size: 0.75rem; color: var(--on-surface-variant);">• 19.0557° N, -98.2302° W</span>
+            </div>
+            <div style="font-family: var(--font-label); font-size: 0.6875rem; font-weight: 600; color: var(--tertiary);">
+              ≈3 min desde Av. Juárez
+            </div>
+          </div>
+
+          <!-- SVG Cartográfico Esquemático con Proporciones Reales -->
+          <div class="map-svg-canvas">
+            <svg viewBox="0 0 540 280" style="width: 100%; height: 100%; display: block;" aria-label="Croquis de calles y ubicación">
+              <!-- Calles esquemáticas con coordenadas relativas reales de Colonia La Paz -->
+              <!-- Av. Juárez (eje sur) -->
+              <line x1="30" y1="240" x2="510" y2="240" stroke="#dfd0be" stroke-width="12" stroke-linecap="round"/>
+              <text x="50" y="255" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#9e8a78" letter-spacing="0.1em">AVENIDA JUÁREZ</text>
+
+              <!-- Av. Teziutlán Sur y Norte (eje diagonal principal) -->
+              <line x1="220" y1="260" x2="270" y2="30" stroke="#dfd0be" stroke-width="14" stroke-linecap="round"/>
+              <text x="145" y="105" transform="rotate(-77 145,105)" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#9e8a78" letter-spacing="0.1em">AV. TEZIUTLÁN NORTE</text>
+
+              <!-- Calle Tecamachalco (cruce perpendicular donde está la pizzería) -->
+              <line x1="120" y1="120" x2="420" y2="120" stroke="#dfd0be" stroke-width="10" stroke-linecap="round"/>
+              <text x="320" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#9e8a78">C. TECAMACHALCO</text>
+
+              <!-- Calle Huauchinango / Oriental -->
+              <line x1="80" y1="170" x2="460" y2="170" stroke="#ede0d0" stroke-width="8" stroke-linecap="round"/>
+              <text x="330" y="164" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#a39384">C. HUAUCHINANGO</text>
+
+              <!-- Anillo de escala / distancia 200m -->
+              <circle cx="250" cy="120" r="48" fill="#b84a24" fill-opacity="0.08" stroke="#b84a24" stroke-dasharray="3 3" stroke-width="1"/>
+              <text x="250" y="175" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="7.5" font-weight="600" fill="#b84a24">Radio de confort peatonal 200m</text>
+
+              <!-- Ruta visual dinámica (se activa según tab) -->
+              <path id="routePathSvg" d="M 220,240 L 250,120" fill="none" stroke="#b84a24" stroke-width="4" stroke-dasharray="6 4" stroke-linecap="round"/>
+
+              <!-- Hito: Cerro de La Paz (fondo norte) -->
+              <path d="M 380,45 Q 430,15 480,45 Z" fill="#e1efe9" stroke="#1d6356" stroke-width="1.5"/>
+              <text x="430" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#1d6356">CERRO DE LA PAZ</text>
+
+              <!-- Marcador prominente: Pizzería Vía Veneto (#46) -->
+              <g transform="translate(250, 120)">
+                <circle cx="0" cy="0" r="14" fill="#b84a24" stroke="#ffffff" stroke-width="3" filter="drop-shadow(0 2px 6px rgba(184,74,36,0.5))"/>
+                <circle cx="0" cy="0" r="5" fill="#ffffff"/>
+                <!-- Tooltip badge permanente -->
+                <rect x="-80" y="-38" width="160" height="24" rx="12" fill="#261b15"/>
+                <text x="0" y="-23" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#f9f3eb">★ VÍA VENETO (#46)</text>
+              </g>
+
+              <!-- Marcadores de referencia -->
+              <circle cx="220" cy="240" r="5" fill="#8f6524"/>
+              <text x="232" y="243" font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="700" fill="#57483f">Cruce Juarez / Teziutlán</text>
+            </svg>
+          </div>
+
+          <!-- Selector de Cómo Llegar -->
+          <div>
+            <div class="route-selector-tabs" role="tablist">
+              <button type="button" class="route-tab-btn active" onclick="setRouteGuide('juarez', this)">Desde Av. Juárez</button>
+              <button type="button" class="route-tab-btn" onclick="setRouteGuide('recta', this)">Desde Recta a Cholula</button>
+              <button type="button" class="route-tab-btn" onclick="setRouteGuide('reforma', this)">Desde Reforma Sur</button>
+            </div>
+            <p id="routeGuideText" style="font-size: 0.78rem; margin: 8px 0 0; text-align: center; color: var(--on-surface-variant);">
+              Subir por Avenida Teziutlán Sur en dirección norte. Cruzar Calle Huauchinango; el restaurante se ubica exactamente en la esquina con Tecamachalco (#46).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. Barra Fija Inferior Flotante para Móviles -->
+  <nav class="mobile-bottom-bar" aria-label="Acciones rápidas móviles">
+    <button type="button" class="mobile-bar-btn" onclick="toggleOrderDrawer()">
+      <i data-lucide="shopping-bag" style="width: 18px; height: 18px; color: var(--primary);"></i>
+      <span>Comanda (<span id="mobileCartCount">0</span>)</span>
+    </button>
+    <a href="#reservas" class="mobile-bar-btn">
+      <i data-lucide="calendar" style="width: 18px; height: 18px; color: var(--secondary);"></i>
+      <span>Reservar</span>
+    </a>
+    <button type="button" class="mobile-bar-btn btn-cta" onclick="openWhatsAppDirectModal()">
+      <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+      <span>WhatsApp 221 368 5627</span>
+    </button>
+    <a href="tel:2222483097" class="mobile-bar-btn">
+      <i data-lucide="phone" style="width: 18px; height: 18px; color: var(--tertiary);"></i>
+      <span>Llamar</span>
+    </a>
+  </nav>
+
+  <!-- Modal Interactivo para WhatsApp Directo & Asistencia Inmediata -->
+  <div id="whatsappModal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="custom-modal-card">
+      <button type="button" class="modal-close-btn" onclick="closeWhatsAppModal()" aria-label="Cerrar ventana">
+        <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+      </button>
+
+      <span class="kicker kicker-brass">ATENCIÓN DIRECTA SIN INTERMEDIARIOS</span>
+      <h3 id="modalTitle" style="font-size: 1.5rem; margin-top: 4px; margin-bottom: var(--space-xs);">
+        Canal Oficial de WhatsApp
+      </h3>
+      <p style="font-size: 0.875rem;">
+        Comunícate directamente con nuestro personal en Avenida Teziutlán Norte para coordinar pedidos a domicilio, recolección (Pick-up) o verificar disponibilidad inmediata de mesas en terraza.
+      </p>
+
+      <div style="background: var(--surface-container-low); border: 1px solid var(--outline-variant); border-radius: var(--rounded); padding: var(--space-md); margin-bottom: var(--space-md);">
+        <div style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-label); font-weight: 700; color: var(--on-surface-variant);">Número Oficial para WhatsApp</div>
+        <div style="font-size: 1.4rem; font-family: var(--font-headline); font-weight: 700; color: var(--primary);">+52 221 368 5627</div>
+        <div style="font-size: 0.8125rem; color: var(--tertiary); font-weight: 600; margin-top: 2px;">
+          <i data-lucide="check" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> Línea verificada de Pizzería Vía Veneto
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="modalMessagePreview" class="form-label">Mensaje Sugerido para Enviar</label>
+        <textarea id="modalMessagePreview" class="form-control" rows="3" readonly>¡Hola Pizzería Vía Veneto! Me gustaría solicitar información sobre pedidos y disponibilidad de mesa en terraza en Av. Teziutlán Norte 46.</textarea>
+      </div>
+
+      <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+        <button type="button" class="btn btn-primary" onclick="copyModalMessage()" style="flex: 1;">
+          <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+          <span>Copiar Mensaje y Número</span>
+        </button>
+        <a href="tel:2222483097" class="btn btn-secondary" style="flex: 1;">
+          <i data-lucide="phone-call" style="width: 16px; height: 16px;"></i>
+          <span>Llamar al Fijo: 248 3097</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Off-Canvas Order Comanda Drawer -->
+  <div id="drawerBackdrop" class="order-drawer-backdrop" onclick="toggleOrderDrawer()"></div>
+  <aside id="orderDrawer" class="order-drawer" aria-label="Tu comanda de pedido">
+    <div class="drawer-header">
+      <div style="display: flex; align-items: center; gap: var(--space-xs);">
+        <i data-lucide="shopping-bag" style="color: var(--primary); width: 22px; height: 22px;"></i>
+        <h3 style="font-size: 1.3rem; margin: 0;">Tu Pedido Vía Veneto</h3>
+      </div>
+      <button type="button" class="qty-btn" onclick="toggleOrderDrawer()" aria-label="Cerrar comanda">
+        <i data-lucide="x" style="width: 16px; height: 16px;"></i>
+      </button>
+    </div>
+
+    <div id="drawerCartItems" class="drawer-body">
+      <!-- Items agregados se listarán aquí -->
+    </div>
+
+    <div class="drawer-footer">
+      <div style="margin-bottom: var(--space-sm);">
+        <label for="orderTypeSelect" class="form-label">Modalidad de Pedido</label>
+        <select id="orderTypeSelect" class="form-control" onchange="updateOrderTypeView()">
+          <option value="pickup" selected>Pasar a Recoger (Pick-up en Teziutlán Nte. 46)</option>
+          <option value="delivery">Envío a Domicilio (Zona La Paz / Alrededores)</option>
+        </select>
+      </div>
+
+      <div id="deliveryFields" style="display: none; margin-bottom: var(--space-sm);">
+        <label for="clientAddress" class="form-label">Dirección de Entrega</label>
+        <input type="text" id="clientAddress" class="form-control" placeholder="Calle, número, colonia y referencias">
+      </div>
+
+      <div style="margin-bottom: var(--space-sm);">
+        <label for="clientNameOrder" class="form-label">Tu Nombre</label>
+        <input type="text" id="clientNameOrder" class="form-control" placeholder="Nombre completo">
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: var(--space-sm); margin-bottom: var(--space-md); border-top: 1px solid var(--outline-variant); padding-top: var(--space-sm);">
+        <span style="font-family: var(--font-label); font-weight: 700; text-transform: uppercase; font-size: 0.8125rem;">Total Estimado:</span>
+        <span id="drawerTotalText" style="font-family: var(--font-headline); font-size: 1.6rem; font-weight: 700; color: var(--primary);">$0 MXN</span>
+      </div>
+
+      <button type="button" class="btn btn-emerald" onclick="submitOrderViaWhatsApp()" style="width: 100%;">
+        <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+        <span>Enviar Pedido por WhatsApp</span>
+      </button>
+      <div style="text-align: center; margin-top: 6px;">
+        <span style="font-size: 0.72rem; color: var(--on-surface-variant);">Sin comisiones de apps externas • Pago al recibir</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Notification Pill -->
+  <div id="toastNotification" class="toast-pill" role="status" aria-live="polite">
+    Notificación
+  </div>
+
+  <!-- Footer Oficial -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h5 style="font-size: 1.5rem;">Pizzería Vía Veneto</h5>
+        <p style="font-size: 0.875rem;">
+          Tradición artesanal y pizzería de barrio en la Colonia La Paz desde 1995. Masa delgada, ingredientes honestos y el placer inigualable de compartir al aire libre.
+        </p>
+        <div style="display: flex; gap: var(--space-xs); margin-top: var(--space-sm);">
+          <span class="badge-emerald">dal 1995</span>
+          <span class="badge-terracotta">Av. Teziutlán Nte. 46</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navegación Rápida</h5>
+        <ul class="footer-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#menu">Menú Digital Completo</a></li>
+          <li><a href="#terraza">Experiencia en Terraza</a></li>
+          <li><a href="#historia">Nuestra Historia</a></li>
+          <li><a href="#reservas">Reservaciones</a></li>
+          <li><a href="#contacto">Ubicación y Rutas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contacto Directo</h5>
+        <ul class="footer-links">
+          <li><strong>Dirección:</strong> Av. Teziutlán Norte 46, La Paz</li>
+          <li><strong>Teléfono:</strong> <a href="tel:2222483097">(222) 248 3097</a></li>
+          <li><strong>WhatsApp:</strong> +52 221 368 5627</li>
+          <li><strong>Horario:</strong> Todos los días de 13:30 a 23:00 hrs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="max-width: 1200px; margin: var(--space-xl) auto 0; padding-top: var(--space-md); border-top: 1px solid var(--outline-variant); text-align: center; font-size: 0.75rem; color: var(--on-surface-variant);">
+      © 2026 Pizzería Vía Veneto • Todos los derechos reservados • Colonia La Paz, Heroica Puebla de Zaragoza, México.
+    </div>
+  </footer>
+
+  <!-- State persistence shim required before main script -->
+  <api-shim></api-shim>
+
+  <script>
+    // Catálogo 100% auténtico de Pizzería Vía Veneto según menú oficial y fuentes
+    const MENU_ITEMS = [
+      // Le Meraviglie (Especialidades de la casa)
+      {
+        id: "giuliana",
+        name: "Giuliana",
+        category: "meraviglie",
+        price: 250,
+        ingredients: "Higo fresco, nuez caramelizada, queso brie francés, mozzarella y finas tiras de jamón serrano.",
+        tags: ["especial", "favorita"],
+        tagLabel: "Favorita del Barrio"
+      },
+      {
+        id: "yamilone",
+        name: "Yamilone Mega Ovni",
+        category: "meraviglie",
+        price: 250,
+        ingredients: "Pizza doble horneada con 4 quesos fundidos, sierra y berenjena a la plancha.",
+        tags: ["especial"],
+        tagLabel: "Especialidad de la Casa"
+      },
+      {
+        id: "max",
+        name: "Max",
+        category: "meraviglie",
+        price: 270,
+        ingredients: "Salmón ahumado selecto, caviar y delicadas cucharadas de crema fresca sobre masa crujiente.",
+        tags: ["especial", "gourmet"],
+        tagLabel: "Gourmet"
+      },
+      {
+        id: "sublime-piastra",
+        name: "Sublime Piastra",
+        category: "meraviglie",
+        price: 245,
+        ingredients: "Calabaza y berenjena a la plancha, pimiento rojo asado con queso brie y Philadelphia.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+      {
+        id: "brie",
+        name: "Brie",
+        category: "meraviglie",
+        price: 220,
+        ingredients: "Pizza blanca con calabaza y berenjena a la plancha, trocitos de queso brie y parmesano.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+      {
+        id: "pierre",
+        name: "Pierre",
+        category: "meraviglie",
+        price: 250,
+        ingredients: "Base Primavera especial complementada con trocitos de queso brie y salmón ahumado.",
+        tags: ["especial"],
+        tagLabel: "Especial"
+      },
+      {
+        id: "manuel",
+        name: "Manuel",
+        category: "meraviglie",
+        price: 200,
+        ingredients: "Pizza blanca aromatizada con jitomates deshidratados al sol y queso brie fundido.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+      {
+        id: "gustosa",
+        name: "Gustosa",
+        category: "meraviglie",
+        price: 270,
+        ingredients: "Berenjena y calabaza asadas a la plancha con generoso jamón serrano español.",
+        tags: ["especial"],
+        tagLabel: "Especial"
+      },
+      {
+        id: "formaggiata",
+        name: "Formaggiata",
+        category: "meraviglie",
+        price: 220,
+        ingredients: "Pizza blanca con una auténtica y generosa explosión de varios quesos fundidos al horno.",
+        tags: ["veggie"],
+        tagLabel: "4 Quesos"
+      },
+      {
+        id: "primavera-extra",
+        name: "Primavera Extra",
+        category: "meraviglie",
+        price: 220,
+        ingredients: "Salsa pomodoro, ajo, jitomate fresco rebanado, albahaca y trozos de queso brie.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+
+      // Le Pizze Classiche e Speciali
+      {
+        id: "trota-rucola",
+        name: "Trota e Rucola",
+        category: "classiche",
+        price: 245,
+        ingredients: "Trucha ahumada, tomate uva, aceitunas negras, arúgula fresca y suave queso de cabra.",
+        tags: ["especial"],
+        tagLabel: "Especial"
+      },
+      {
+        id: "margherita",
+        name: "Margherita",
+        category: "classiche",
+        price: 145,
+        ingredients: "La reina tradicional italiana: salsa de tomate pomodoro, queso mozzarella fundido y orégano.",
+        tags: ["veggie"],
+        tagLabel: "Clásica"
+      },
+      {
+        id: "prosciutto-funghi",
+        name: "Prosciutto e Funghi",
+        category: "classiche",
+        price: 180,
+        ingredients: "Jamón cocido de primera calidad y champiñones frescos rebanados.",
+        tags: [],
+        tagLabel: "Clásica"
+      },
+      {
+        id: "luciano",
+        name: "Luciano",
+        category: "classiche",
+        price: 220,
+        ingredients: "Salami italiano seleccionado, aceitunas negras del Mediterráneo y queso Philadelphia.",
+        tags: [],
+        tagLabel: "Tradizionale"
+      },
+      {
+        id: "roberta",
+        name: "Roberta",
+        category: "classiche",
+        price: 250,
+        ingredients: "Finas tiras de jamón serrano, salami tradicional y queso Philadelphia.",
+        tags: ["especial"],
+        tagLabel: "Especial"
+      },
+      {
+        id: "delizia",
+        name: "Delizia",
+        category: "classiche",
+        price: 260,
+        ingredients: "Combinación de camarón salteado y salmón ahumado selecto sobre base de queso.",
+        tags: ["especial"],
+        tagLabel: "Mar y Tierra"
+      },
+      {
+        id: "gamberetti",
+        name: "Gamberetti",
+        category: "classiche",
+        price: 240,
+        ingredients: "Camarones tiernos salteados con hierbas italianas sobre mozzarella fundida.",
+        tags: [],
+        tagLabel: "Especial"
+      },
+      {
+        id: "alla-piastra",
+        name: "Alla Piastra",
+        category: "classiche",
+        price: 200,
+        ingredients: "Berenjena y calabaza asadas a la plancha con salsa de tomate y queso.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+      {
+        id: "quattro-stagioni",
+        name: "Quattro Stagioni",
+        category: "classiche",
+        price: 190,
+        ingredients: "Cuatro estaciones: jamón, pimiento morrón, champiñones frescos y corazones de alcachofa.",
+        tags: [],
+        tagLabel: "Tradizionale"
+      },
+      {
+        id: "carciofini",
+        name: "Carciofini",
+        category: "classiche",
+        price: 175,
+        ingredients: "Tiernos corazones de alcachofa marinados y queso mozzarella fundido.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+      {
+        id: "calzone",
+        name: "Calzone Clásico",
+        category: "classiche",
+        price: 190,
+        ingredients: "Pizza doblada al horno, rellena de jamón, pimiento morrón, champiñones y queso.",
+        tags: [],
+        tagLabel: "Al Horno"
+      },
+      {
+        id: "tonno-cipolla",
+        name: "Tonno e Cipolla",
+        category: "classiche",
+        price: 180,
+        ingredients: "Lomos de atún selecto y cebolla caramelizada suave.",
+        tags: [],
+        tagLabel: "Tradizionale"
+      },
+      {
+        id: "salame",
+        name: "Salame",
+        category: "classiche",
+        price: 190,
+        ingredients: "Salami italiano tradicional y queso mozzarella fundido.",
+        tags: [],
+        tagLabel: "Clásica"
+      },
+
+      // Le Paste Artigianali
+      {
+        id: "fusilli-pesto",
+        name: "Fusilli al Pesto con Gamberetti",
+        category: "paste",
+        price: 175,
+        ingredients: "Pasta tornillo con salsa de albahaca fresca, piñón tostado, aceite de oliva y camarones.",
+        tags: ["especial"],
+        tagLabel: "Recomendación"
+      },
+      {
+        id: "spaghetti-bolognesa",
+        name: "Spaghetti Alla Bolognesa",
+        category: "paste",
+        price: 150,
+        ingredients: "La bien conocida bologñesa: carne de res cocinada lentamente con jitomate y hierbas.",
+        tags: [],
+        tagLabel: "Tradicional"
+      },
+      {
+        id: "pasticcio",
+        name: "Pasticcio (Lasaña de Carne)",
+        category: "paste",
+        price: 145,
+        ingredients: "Láminas de pasta artesanal intercaladas con carne bologñesa, bechamel y gratinado de queso.",
+        tags: ["especial"],
+        tagLabel: "Al Horno"
+      },
+      {
+        id: "gnocchis",
+        name: "Gnocchis Artesanales (200 gr)",
+        category: "paste",
+        price: 150,
+        ingredients: "Pastas de papa hechas a mano servidas con salsa de quesos o bolognesa de la casa.",
+        tags: ["veggie"],
+        tagLabel: "Hecho a Mano"
+      },
+      {
+        id: "penne-4-formaggi",
+        name: "Penne 4 Formaggi",
+        category: "paste",
+        price: 150,
+        ingredients: "Plumas con salsa de quesos selectos: edam, emental, roquefort y parmesano.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+      {
+        id: "ravioles",
+        name: "Ravioles Rellenos",
+        category: "paste",
+        price: 150,
+        ingredients: "Ravioles artesanales con salsa de carne, cuatro quesos o espinaca con requesón.",
+        tags: [],
+        tagLabel: "Casero"
+      },
+      {
+        id: "spaghetti-aglio-olio",
+        name: "Spaghetti Aglio Olio e Peperoncino",
+        category: "paste",
+        price: 125,
+        ingredients: "Aceite de oliva virgen extra con ajo dorado y semillas de chile peperoncino.",
+        tags: ["veggie"],
+        tagLabel: "Clásico"
+      },
+
+      // Insalate e Antipasti
+      {
+        id: "plato-veneto",
+        name: "Plato Veneto",
+        category: "insalate",
+        price: 230,
+        ingredients: "Jamón serrano, mozzarella fresca, aceitunas con toque de albahaca y pan de ajo recién horneado.",
+        tags: ["especial"],
+        tagLabel: "Para Compartir"
+      },
+      {
+        id: "ensalada-casa",
+        name: "Ensalada de la Casa",
+        category: "insalate",
+        price: 135,
+        ingredients: "Mezcla de lechugas frescas, fresas, nuez caramelizada, queso brie y aderezo especial de mango.",
+        tags: ["veggie"],
+        tagLabel: "Fresco"
+      },
+      {
+        id: "caprese-super",
+        name: "Caprese Super",
+        category: "insalate",
+        price: 190,
+        ingredients: "Jitomate, mozzarella, albahaca fresca con arúgula y tu elección de jamón serrano o salmón.",
+        tags: ["especial"],
+        tagLabel: "Especial"
+      },
+      {
+        id: "caprese-tradicional",
+        name: "Caprese Tradicional",
+        category: "insalate",
+        price: 135,
+        ingredients: "La típica receta italiana con jitomate bola, queso mozzarella y albahaca aromatizada.",
+        tags: ["veggie"],
+        tagLabel: "Vegetariana"
+      },
+
+      // I Dolci e I Nostri Caffè
+      {
+        id: "tiramisu",
+        name: "Tiramisú Tradizionale",
+        category: "dolci",
+        price: 80,
+        ingredients: "Elaboración clásica italiana con savoiardi, café espresso, crema mascarpone y cacao amargo.",
+        tags: ["especial"],
+        tagLabel: "Postre Insignia"
+      },
+      {
+        id: "pizza-elisa",
+        name: "Elisa (Pizza de Nutella)",
+        category: "dolci",
+        price: 200,
+        ingredients: "Base crujiente untada con Nutella caliente y frutas frescas de temporada rebanadas.",
+        tags: ["especial"],
+        tagLabel: "Para Compartir"
+      },
+      {
+        id: "postres-rebanada",
+        name: "Pay de Zarzamora / Flan Napolitano",
+        category: "dolci",
+        price: 75,
+        ingredients: "Rebanada artesanal del día a elegir entre Pay de Queso con Zarzamora, Limón Helado o Flan.",
+        tags: [],
+        tagLabel: "Del Día"
+      },
+      {
+        id: "carajillo",
+        name: "Carajillo Vía Veneto",
+        category: "dolci",
+        price: 130,
+        ingredients: "Café espresso recién extraído batido al momento con Licor 43 y hielo.",
+        tags: ["especial"],
+        tagLabel: "Especial"
+      },
+      {
+        id: "cappuccino-especial",
+        name: "Capuccino con Kalhúa o Amaretto",
+        category: "dolci",
+        price: 75,
+        ingredients: "Espresso cremoso con leche vaporizada aromatizado con licor de Amaretto o Kalhúa.",
+        tags: [],
+        tagLabel: "Café"
+      },
+      {
+        id: "espresso",
+        name: "Espresso / Americano",
+        category: "dolci",
+        price: 45,
+        ingredients: "Extracción pura de café de grano tostado de altura.",
+        tags: [],
+        tagLabel: "Café"
+      },
+
+      // Bibite e Vini
+      {
+        id: "clericot-jarra",
+        name: "Clericot de la Casa (Jarra 1 Litro)",
+        category: "bibite",
+        price: 320,
+        ingredients: "Vino tinto de la casa macerado con fruta fresca picada, toques cítricos y receta especial Vía Veneto.",
+        tags: ["especial"],
+        tagLabel: "Favorito en Terraza"
+      },
+      {
+        id: "clericot-vaso",
+        name: "Clericot por Copa",
+        category: "bibite",
+        price: 130,
+        ingredients: "Vaso de clericot refrescante con fruta macerada.",
+        tags: [],
+        tagLabel: "Copa"
+      },
+      {
+        id: "copa-vino",
+        name: "Copa de Vino de la Casa",
+        category: "bibite",
+        price: 70,
+        ingredients: "Selección de tinto o blanco para acompañar tus pizzas y pastas.",
+        tags: [],
+        tagLabel: "Vino"
+      },
+      {
+        id: "aperol",
+        name: "Aperol Spritz",
+        category: "bibite",
+        price: 140,
+        ingredients: "El clásico aperitivo italiano con prosecco, Aperol y un toque de agua mineral con naranja.",
+        tags: ["especial"],
+        tagLabel: "Aperitivo"
+      },
+      {
+        id: "birra",
+        name: "Birra / Cerveza",
+        category: "bibite",
+        price: 50,
+        ingredients: "Cervezas nacionales y micheladas ($60) / Cervezas Ultra, Stella y Heineken ($65).",
+        tags: [],
+        tagLabel: "Bebida"
+      }
+    ];
+
+    // Datos para la Galería Interactiva de Terraza
+    const GALLERY_SLIDES = [
+      {
+        tag: "Atardecer en La Paz",
+        title: "Mesas al Aire Libre Bajo Cielo Poblano",
+        desc: "El momento más cotizado del día: la transición de la tarde a la noche con clima fresco y luces tenues.",
+        badgeColor: "badge-emerald",
+        render: function() {
+          return `
+            <defs>
+              <linearGradient id="gSky1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4a2e22"/>
+                <stop offset="60%" stop-color="#8f5030"/>
+                <stop offset="100%" stop-color="#261b15"/>
+              </linearGradient>
+            </defs>
+            <rect width="500" height="340" fill="url(#gSky1)"/>
+            <path d="M 0,40 Q 125,90 250,50 Q 375,90 500,45" fill="none" stroke="#d4a857" stroke-width="2"/>
+            <circle cx="60" cy="65" r="7" fill="#fbd38d"/>
+            <circle cx="130" cy="73" r="7" fill="#fbd38d"/>
+            <circle cx="190" cy="62" r="7" fill="#fbd38d"/>
+            <circle cx="310" cy="67" r="7" fill="#fbd38d"/>
+            <circle cx="380" cy="74" r="7" fill="#fbd38d"/>
+            <circle cx="440" cy="65" r="7" fill="#fbd38d"/>
+            <rect x="30" y="220" width="40" height="60" rx="4" fill="#7d2e12"/>
+            <path d="M 20,220 Q 50,150 80,220 Z" fill="#1d6356" opacity="0.9"/>
+            <rect x="430" y="220" width="40" height="60" rx="4" fill="#7d2e12"/>
+            <path d="M 420,220 Q 450,150 480,220 Z" fill="#1d6356" opacity="0.9"/>
+            <rect x="150" y="240" width="200" height="15" rx="4" fill="#dfd0be"/>
+            <rect x="240" y="255" width="20" height="85" fill="#57483f"/>
+            <ellipse cx="250" cy="235" rx="60" ry="15" fill="#f7ebe0" stroke="#b84a24" stroke-width="2"/>
+            <rect x="245" y="215" width="10" height="18" rx="2" fill="#e4d4c0"/>
+            <circle cx="250" cy="210" r="4" fill="#b5893e"/>
+          `;
+        }
+      },
+      {
+        tag: "Velada Íntima",
+        title: "Noche Romántica a la Luz de las Velas",
+        desc: "Ambiente cálido y acogedor con iluminación suave, ideal para aniversarios, citas y celebraciones íntimas.",
+        badgeColor: "badge-terracotta",
+        render: function() {
+          return `
+            <defs>
+              <linearGradient id="gSky2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a1310"/>
+                <stop offset="70%" stop-color="#2a1e17"/>
+                <stop offset="100%" stop-color="#140d0a"/>
+              </linearGradient>
+              <radialGradient id="candleGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffd580" stop-opacity="0.8"/>
+                <stop offset="60%" stop-color="#d48a37" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#1a1310" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="500" height="340" fill="url(#gSky2)"/>
+            <circle cx="250" cy="180" r="160" fill="url(#candleGlow)"/>
+            <ellipse cx="250" cy="240" rx="130" ry="40" fill="#241b16" stroke="#8f6524" stroke-width="2"/>
+            <rect x="244" y="180" width="12" height="30" rx="3" fill="#f4efe6"/>
+            <path d="M 250,165 Q 254,175 250,180 Q 246,175 250,165 Z" fill="#fbd38d"/>
+            <path d="M 180,210 L 195,210 L 188,230 L 188,245 M 182,245 L 194,245" stroke="#b5893e" stroke-width="2" fill="none"/>
+            <path d="M 182,212 Q 188,220 194,212 Z" fill="#8c3838"/>
+            <path d="M 310,210 L 325,210 L 318,230 L 318,245 M 312,245 L 324,245" stroke="#b5893e" stroke-width="2" fill="none"/>
+            <path d="M 312,212 Q 318,220 324,212 Z" fill="#8c3838"/>
+            <circle cx="250" cy="235" r="34" fill="#df8645" stroke="#b84a24" stroke-width="2"/>
+          `;
+        }
+      },
+      {
+        tag: "Tradición dal 1995",
+        title: "Masa Delgada y Horno Artesanal",
+        desc: "Cada pizza se estira a mano y se dora en el horno de piedra para lograr una textura ligera e inigualable.",
+        badgeColor: "badge-emerald",
+        render: function() {
+          return `
+            <defs>
+              <linearGradient id="gFire" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#b82929"/>
+                <stop offset="60%" stop-color="#e07a52"/>
+                <stop offset="100%" stop-color="#ffd166"/>
+              </linearGradient>
+            </defs>
+            <rect width="500" height="340" fill="#261b15"/>
+            <!-- Boca del horno de piedra en arco -->
+            <path d="M 90,290 L 90,140 Q 250,40 410,140 L 410,290 Z" fill="#3d2b22" stroke="#8f6524" stroke-width="3"/>
+            <path d="M 130,290 L 130,170 Q 250,90 370,170 L 370,290 Z" fill="#140d0a"/>
+            <!-- Llamas en el fondo del horno -->
+            <path d="M 160,280 Q 180,200 200,280 Q 230,170 260,280 Q 290,190 320,280 Q 340,230 350,280 Z" fill="url(#gFire)"/>
+            <!-- Pala de pizza entrando -->
+            <line x1="20" y1="260" x2="230" y2="240" stroke="#9e8a78" stroke-width="6" stroke-linecap="round"/>
+            <ellipse cx="260" cy="238" rx="42" ry="18" fill="#f4caa1" stroke="#b84a24" stroke-width="2"/>
+            <circle cx="252" cy="235" r="4" fill="#8c3838"/>
+            <circle cx="268" cy="240" r="3.5" fill="#8c3838"/>
+            <circle cx="260" cy="232" r="3" fill="#1d6356"/>
+          `;
+        }
+      },
+      {
+        tag: "Reunión Familiar",
+        title: "Mesas Amplias para Familias y Grupos",
+        desc: "Capacidad para comensales de hasta 15+ personas, perfecto para comidas de domingo y cumpleaños en La Paz.",
+        badgeColor: "badge-terracotta",
+        render: function() {
+          return `
+            <defs>
+              <linearGradient id="gFamily" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3d2b22"/>
+                <stop offset="100%" stop-color="#1d140e"/>
+              </linearGradient>
+            </defs>
+            <rect width="500" height="340" fill="url(#gFamily)"/>
+            <!-- Gran mesa comunal -->
+            <polygon points="50,250 450,250 410,180 90,180" fill="#ede0d0" stroke="#9e8a78" stroke-width="2"/>
+            <!-- Platos múltiples y jarras de clericot -->
+            <ellipse cx="150" cy="215" rx="30" ry="12" fill="#df8645" stroke="#b84a24" stroke-width="1.5"/>
+            <ellipse cx="250" cy="205" rx="35" ry="14" fill="#df8645" stroke="#b84a24" stroke-width="1.5"/>
+            <ellipse cx="350" cy="215" rx="30" ry="12" fill="#df8645" stroke="#b84a24" stroke-width="1.5"/>
+            <!-- Jarra de Clericot central -->
+            <rect x="242" y="150" width="16" height="30" rx="3" fill="#8c3838" stroke="#dfd0be" stroke-width="1.5"/>
+            <path d="M 238,155 Q 232,165 242,175" fill="none" stroke="#dfd0be" stroke-width="2"/>
+            <!-- Guirnalda festiva superior -->
+            <path d="M 0,30 Q 250,70 500,30" fill="none" stroke="#b5893e" stroke-width="2"/>
+            <circle cx="100" cy="45" r="6" fill="#fbd38d"/>
+            <circle cx="250" cy="50" r="6" fill="#fbd38d"/>
+            <circle cx="400" cy="45" r="6" fill="#fbd38d"/>
+          `;
+        }
+      }
+    ];
+
+    // Estado reactivo de la aplicación
+    let currentCategory = "all";
+    let activeTag = null;
+    let appState = {
+      cart: [], // { item: MENU_ITEM, qty: number, notes: string }
+      reservationDraft: {
+        date: "",
+        time: "20:30",
+        guests: "3-4 personas",
+        area: "Terraza al Aire Libre",
+        name: "",
+        phone: "",
+        occasion: ""
+      }
+    };
+
+    // Inicialización al cargar la página
+    document.addEventListener("DOMContentLoaded", async function() {
+      // 1. Establecer fecha mínima para el selector de reserva (hoy)
+      const dateInput = document.getElementById("resDate");
+      if (dateInput) {
+        const today = new Date().toISOString().split("T")[0];
+        dateInput.min = today;
+        dateInput.value = today;
+      }
+
+      // 2. Restaurar estado persistido con la API Notebook shim
+      await restorePersistentState();
+
+      // 3. Renderizar el menú completo
+      renderMenu();
+
+      // 4. Actualizar contador y vista de carrito
+      updateCartUI();
+
+      // 5. Inicializar iconos de Lucide
+      if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
+      }
+    });
+
+    // Restauración de estado persistente simétrico
+    async function restorePersistentState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === "function") {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === "object") {
+            if (Array.isArray(saved.cart)) {
+              appState.cart = saved.cart;
+            }
+            if (saved.reservationDraft && typeof saved.reservationDraft === "object") {
+              appState.reservationDraft = { ...appState.reservationDraft, ...saved.reservationDraft };
+              // Rellenar campos si existen
+              if (appState.reservationDraft.name) {
+                const nameEl = document.getElementById("resName");
+                if (nameEl) nameEl.value = appState.reservationDraft.name;
+              }
+              if (appState.reservationDraft.phone) {
+                const phoneEl = document.getElementById("resPhone");
+                if (phoneEl) phoneEl.value = appState.reservationDraft.phone;
+              }
+            }
+          }
+        }
+      } catch (err) {
+        console.warn("Estado previo no cargado:", err);
+      }
+    }
+
+    // Guardado de estado persistente simétrico
+    function persistCurrentState() {
+      try {
+        if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === "function") {
+          window.notebookAppApi.setAppState(appState);
+        }
+      } catch (err) {
+        console.warn("Error guardando estado:", err);
+      }
+    }
+
+    // Renderizado del Menú Digital
+    function renderMenu() {
+      const container = document.getElementById("menuCardsGrid");
+      if (!container) return;
+
+      const searchVal = (document.getElementById("menuSearchInput")?.value || "").toLowerCase().trim();
+
+      const filtered = MENU_ITEMS.filter(item => {
+        // Filtro por categoría
+        const matchCategory = (currentCategory === "all") || (item.category === currentCategory);
+
+        // Filtro por tag especial
+        let matchTag = true;
+        if (activeTag === "veggie") {
+          matchTag = item.tags.includes("veggie");
+        } else if (activeTag === "especial") {
+          matchTag = item.tags.includes("especial") || item.tags.includes("favorita");
+        }
+
+        // Filtro por búsqueda de texto
+        let matchSearch = true;
+        if (searchVal.length > 0) {
+          const combinedText = `${item.name} ${item.ingredients} ${item.tagLabel}`.toLowerCase();
+          matchSearch = combinedText.includes(searchVal);
+        }
+
+        return matchCategory && matchTag && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: var(--space-2xl); background: var(--surface-card); border-radius: var(--rounded-lg); border: 1px dashed var(--outline-variant);">
+            <i data-lucide="utensils" style="width: 36px; height: 36px; color: var(--secondary); margin-bottom: var(--space-xs);"></i>
+            <h4 style="font-size: 1.25rem; margin-bottom: var(--space-xs);">No encontramos platillos con ese criterio</h4>
+            <p style="font-size: 0.875rem; margin-bottom: var(--space-md);">Intenta con ingredientes como "higo", "queso brie", "salmón", "pesto" o restablece los filtros.</p>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="resetFilters()">Restablecer Filtros</button>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const inCartItem = appState.cart.find(c => c.id === item.id);
+        const qty = inCartItem ? inCartItem.qty : 0;
+
+        let tagBadgeHtml = "";
+        if (item.tagLabel) {
+          const isVeggie = item.tags.includes("veggie");
+          const isSpecial = item.tags.includes("especial") || item.tags.includes("favorita");
+          const tagClass = isVeggie ? "tag-veggie" : (isSpecial ? "tag-special" : "");
+          tagBadgeHtml = `<span class="item-tag ${tagClass}">${item.tagLabel}</span>`;
+        }
+
+        return `
+          <article class="menu-item-card" id="itemCard-${item.id}">
+            <div>
+              <div class="menu-item-top">
+                <h4 class="menu-item-title">${item.name}</h4>
+                <span class="menu-item-price">$${item.price} <small style="font-size: 0.65rem; color: var(--on-surface-variant); font-weight: normal;">MXN</small></span>
+              </div>
+              <div class="menu-item-tags">
+                ${tagBadgeHtml}
+              </div>
+              <p class="menu-item-desc">${item.ingredients}</p>
+            </div>
+
+            <div class="menu-item-footer">
+              <span style="font-family: var(--font-label); font-size: 0.75rem; color: var(--on-surface-variant); font-weight: 600;">
+                ${qty > 0 ? `<span style="color: var(--primary);">✓ ${qty} en tu comanda</span>` : `Artesanal`}
+              </span>
+              <button type="button" class="btn btn-primary btn-sm" onclick="addToCart('${item.id}')" aria-label="Agregar ${item.name} a tu comanda">
+                <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+                <span>${qty > 0 ? `Agregar +1` : `Pedir`}</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    // Filtros de Categorías
+    function selectCategory(cat, btnElement) {
+      currentCategory = cat;
+      const buttons = document.querySelectorAll(".category-pill");
+      buttons.forEach(b => b.classList.remove("active"));
+      if (btnElement) btnElement.classList.add("active");
+      renderMenu();
+    }
+
+    function filterMenuItems() {
+      renderMenu();
+    }
+
+    function filterByTag(tag) {
+      activeTag = (activeTag === tag) ? null : tag;
+      const veggieBtn = document.getElementById("tagBtnVeggie");
+      const specialBtn = document.getElementById("tagBtnSpecial");
+
+      if (veggieBtn) {
+        veggieBtn.style.backgroundColor = (activeTag === "veggie") ? "var(--tertiary)" : "transparent";
+        veggieBtn.style.color = (activeTag === "veggie") ? "#ffffff" : "var(--on-surface)";
+      }
+      if (specialBtn) {
+        specialBtn.style.backgroundColor = (activeTag === "especial") ? "var(--primary)" : "transparent";
+        specialBtn.style.color = (activeTag === "especial") ? "#ffffff" : "var(--on-surface)";
+      }
+      renderMenu();
+    }
+
+    function resetFilters() {
+      currentCategory = "all";
+      activeTag = null;
+      const searchInput = document.getElementById("menuSearchInput");
+      if (searchInput) searchInput.value = "";
+
+      const pills = document.querySelectorAll(".category-pill");
+      pills.forEach((p, idx) => {
+        if (idx === 0) p.classList.add("active");
+        else p.classList.remove("active");
+      });
+
+      const veggieBtn = document.getElementById("tagBtnVeggie");
+      const specialBtn = document.getElementById("tagBtnSpecial");
+      if (veggieBtn) {
+        veggieBtn.style.backgroundColor = "transparent";
+        veggieBtn.style.color = "var(--on-surface)";
+      }
+      if (specialBtn) {
+        specialBtn.style.backgroundColor = "transparent";
+        specialBtn.style.color = "var(--on-surface)";
+      }
+
+      renderMenu();
+      showToast("Filtros restablecidos");
+    }
+
+    // Manejo del Carrito / Comanda
+    function addToCart(itemId) {
+      const item = MENU_ITEMS.find(m => m.id === itemId);
+      if (!item) return;
+
+      const existingIndex = appState.cart.findIndex(c => c.id === itemId);
+      if (existingIndex >= 0) {
+        appState.cart[existingIndex].qty += 1;
+      } else {
+        appState.cart.push({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          qty: 1
+        });
+      }
+
+      persistCurrentState();
+      updateCartUI();
+      renderMenu();
+      showToast(`+1 ${item.name} agregado a tu comanda`);
+    }
+
+    function changeCartItemQty(itemId, delta) {
+      const index = appState.cart.findIndex(c => c.id === itemId);
+      if (index === -1) return;
+
+      appState.cart[index].qty += delta;
+      if (appState.cart[index].qty <= 0) {
+        appState.cart.splice(index, 1);
+      }
+
+      persistCurrentState();
+      updateCartUI();
+      renderMenu();
+    }
+
+    function updateCartUI() {
+      const totalCount = appState.cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = appState.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      const headerCountEl = document.getElementById("headerCartCount");
+      const mobileCountEl = document.getElementById("mobileCartCount");
+      const comandaBarTotalEl = document.getElementById("comandaBarTotal");
+      const drawerTotalTextEl = document.getElementById("drawerTotalText");
+
+      if (headerCountEl) headerCountEl.textContent = totalCount;
+      if (mobileCountEl) mobileCountEl.textContent = totalCount;
+      if (comandaBarTotalEl) comandaBarTotalEl.textContent = `$${totalPrice} MXN`;
+      if (drawerTotalTextEl) drawerTotalTextEl.textContent = `$${totalPrice} MXN`;
+
+      // Renderizar listado dentro del drawer
+      const listContainer = document.getElementById("drawerCartItems");
+      if (!listContainer) return;
+
+      if (appState.cart.length === 0) {
+        listContainer.innerHTML = `
+          <div style="text-align: center; padding: var(--space-xl) var(--space-md); color: var(--on-surface-variant);">
+            <i data-lucide="shopping-bag" style="width: 44px; height: 44px; color: var(--outline); margin-bottom: var(--space-sm);"></i>
+            <h4 style="font-size: 1.15rem; margin-bottom: var(--space-xs);">Tu comanda está vacía</h4>
+            <p style="font-size: 0.875rem;">Explora el menú y agrega pizzas clásicas, especialidades de la casa o pastas para armar tu pedido.</p>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="toggleOrderDrawer()">Ver Platillos</button>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+        return;
+      }
+
+      listContainer.innerHTML = appState.cart.map(c => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <h5 class="cart-item-title">${c.name}</h5>
+            <span class="cart-item-price">$${c.price} MXN c/u &bull; <strong>$${c.price * c.qty} MXN</strong></span>
+          </div>
+          <div class="qty-controls">
+            <button type="button" class="qty-btn" onclick="changeCartItemQty('${c.id}', -1)" aria-label="Disminuir">-</button>
+            <span class="qty-count">${c.qty}</span>
+            <button type="button" class="qty-btn" onclick="changeCartItemQty('${c.id}', 1)" aria-label="Aumentar">+</button>
+          </div>
+        </div>
+      `).join("");
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function toggleOrderDrawer() {
+      const drawer = document.getElementById("orderDrawer");
+      const backdrop = document.getElementById("drawerBackdrop");
+      if (!drawer || !backdrop) return;
+
+      const isOpen = drawer.classList.contains("is-open");
+      if (isOpen) {
+        drawer.classList.remove("is-open");
+        backdrop.classList.remove("is-open");
+      } else {
+        drawer.classList.add("is-open");
+        backdrop.classList.add("is-open");
+      }
+    }
+
+    function updateOrderTypeView() {
+      const type = document.getElementById("orderTypeSelect")?.value;
+      const deliveryBox = document.getElementById("deliveryFields");
+      if (deliveryBox) {
+        deliveryBox.style.display = (type === "delivery") ? "block" : "none";
+      }
+    }
+
+    // Generar Pedido Formateado para WhatsApp
+    function submitOrderViaWhatsApp() {
+      if (appState.cart.length === 0) {
+        showToast("Agrega al menos un platillo a tu comanda");
+        return;
+      }
+
+      const clientName = document.getElementById("clientNameOrder")?.value.trim() || "Cliente Vía Veneto";
+      const orderType = document.getElementById("orderTypeSelect")?.value;
+      const address = document.getElementById("clientAddress")?.value.trim() || "";
+
+      let itemsSummary = "";
+      let total = 0;
+      appState.cart.forEach(item => {
+        const sub = item.price * item.qty;
+        total += sub;
+        itemsSummary += `• ${item.qty}x ${item.name} ($${sub} MXN)\n`;
+      });
+
+      const modeText = (orderType === "delivery") 
+        ? `*Servicio a Domicilio*\n📍 Dirección: ${address || "Por confirmar"}` 
+        : `*Pasar a Recoger (Pick-up en Teziutlán Nte. 46)*`;
+
+      const formattedMessage = 
+`🍕 *NUEVO PEDIDO - PIZZERÍA VÍA VENETO* 🍕
+-----------------------------------------
+👤 *Nombre:* ${clientName}
+📦 *Modalidad:* ${modeText}
+-----------------------------------------
+📋 *Detalle del Pedido:*
+${itemsSummary}
+💰 *Total Estimado:* $${total} MXN
+-----------------------------------------
+¡Hola! Me gustaría confirmar este pedido para preparar. ¿Cuál es el tiempo aproximado?`;
+
+      // Copiar al portapapeles y mostrar modal con instrucciones
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(formattedMessage).then(() => {
+          showToast("¡Pedido copiado al portapapeles!");
+        }).catch(() => {
+          // Fallback silencioso
+        });
+      }
+
+      // Desplegar modal para enviar con número oficial
+      const previewEl = document.getElementById("modalMessagePreview");
+      if (previewEl) previewEl.value = formattedMessage;
+
+      const titleEl = document.getElementById("modalTitle");
+      if (titleEl) titleEl.textContent = "Pedido Listo para WhatsApp";
+
+      toggleOrderDrawer(); // Cerrar drawer
+      openWhatsAppDirectModal(); // Abrir modal de envío
+    }
+
+    // Galería Interactiva de Terraza
+    function switchGallerySlide(index, btnEl) {
+      const slide = GALLERY_SLIDES[index];
+      if (!slide) return;
+
+      const canvasContainer = document.getElementById("galleryDisplay");
+      const titleEl = document.getElementById("galleryTitle");
+      const descEl = document.getElementById("galleryDesc");
+      const tagEl = document.getElementById("galleryTag");
+      const svgCanvas = document.getElementById("gallerySvgCanvas");
+
+      if (svgCanvas) svgCanvas.innerHTML = slide.render();
+      if (titleEl) titleEl.textContent = slide.title;
+      if (descEl) descEl.textContent = slide.desc;
+      if (tagEl) {
+        tagEl.textContent = slide.tag;
+        tagEl.className = slide.badgeColor;
+      }
+
+      // Actualizar botón activo
+      const btns = document.querySelectorAll(".gallery-thumb-btn");
+      btns.forEach(b => b.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+    }
+
+    // Formulario de Reserva Directa
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+
+      const date = document.getElementById("resDate")?.value;
+      const time = document.getElementById("resTime")?.value;
+      const guests = document.getElementById("resGuests")?.value;
+      const area = document.getElementById("resArea")?.value;
+      const name = document.getElementById("resName")?.value.trim();
+      const phone = document.getElementById("resPhone")?.value.trim();
+      const occasion = document.getElementById("resOccasion")?.value.trim() || "Ninguna";
+
+      if (!name || !phone) {
+        showToast("Por favor ingresa tu nombre y teléfono");
+        return;
+      }
+
+      // Generar código de reservación
+      const resCode = "VV-" + Math.floor(1000 + Math.random() * 9000);
+
+      // Guardar en borrador de persistencia
+      appState.reservationDraft = { date, time, guests, area, name, phone, occasion };
+      persistCurrentState();
+
+      // Renderizar confirmación
+      const confirmBox = document.getElementById("resConfirmationBox");
+      if (confirmBox) {
+        confirmBox.style.display = "block";
+        confirmBox.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+            <i data-lucide="check-circle-2" style="width: 22px; height: 22px; color: var(--tertiary);"></i>
+            <strong style="font-size: 1.05rem;">¡Solicitud Generada con Éxito! (${resCode})</strong>
+          </div>
+          <p style="font-size: 0.875rem; margin-bottom: var(--space-xs); color: var(--on-tertiary-container);">
+            Estimado/a <strong>${name}</strong>, hemos reservado tu solicitud para <strong>${guests}</strong> en <strong>${area}</strong> el día <strong>${date}</strong> a las <strong>${time} hrs</strong>.
+          </p>
+          <div style="margin-top: var(--space-sm); display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+            <button type="button" class="btn btn-emerald btn-sm" onclick="sendReservationViaWhatsApp('${resCode}', '${name}', '${date}', '${time}', '${guests}', '${area}', '${occasion}')">
+              <i data-lucide="message-circle" style="width: 14px; height: 14px;"></i>
+              Confirmar por WhatsApp (+52 221 368 5627)
+            </button>
+          </div>
+        `;
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      showToast(`Solicitud ${resCode} generada`);
+    }
+
+    function sendReservationViaWhatsApp(code, name, date, time, guests, area, occasion) {
+      const msg = 
+`🍷 *SOLICITUD DE RESERVA - PIZZERÍA VÍA VENETO* 🍷
+Código: ${code}
+Titular: ${name}
+Fecha: ${date} a las ${time} hrs
+Comensales: ${guests}
+Zona: ${area}
+Ocasión: ${occasion}
+
+¡Hola Vía Veneto! Me gustaría confirmar la disponibilidad de esta mesa en terraza.`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(msg).then(() => {
+          showToast("¡Mensaje de reserva copiado!");
+        });
+      }
+
+      const previewEl = document.getElementById("modalMessagePreview");
+      if (previewEl) previewEl.value = msg;
+
+      const titleEl = document.getElementById("modalTitle");
+      if (titleEl) titleEl.textContent = "Confirmar Reserva por WhatsApp";
+
+      openWhatsAppDirectModal();
+    }
+
+    // Modal de WhatsApp Directo
+    function openWhatsAppDirectModal() {
+      const modal = document.getElementById("whatsappModal");
+      if (modal) modal.classList.add("is-active");
+    }
+
+    function closeWhatsAppModal() {
+      const modal = document.getElementById("whatsappModal");
+      if (modal) modal.classList.remove("is-active");
+    }
+
+    function copyModalMessage() {
+      const text = document.getElementById("modalMessagePreview")?.value || "";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast("¡Mensaje copiado! Envíalo al +52 221 368 5627");
+        });
+      } else {
+        showToast("Número oficial: +52 221 368 5627");
+      }
+    }
+
+    function copyAddressToClipboard() {
+      const address = "Pizzería Vía Veneto, Av. Teziutlán Norte 46, Colonia La Paz, 72160 Puebla, Pue.";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(address).then(() => {
+          showToast("Dirección oficial copiada al portapapeles");
+        });
+      } else {
+        showToast("Av. Teziutlán Norte 46, Col. La Paz");
+      }
+    }
+
+    // Rutas del Mapa Esquemático
+    function setRouteGuide(routeKey, btnEl) {
+      const pathEl = document.getElementById("routePathSvg");
+      const guideTextEl = document.getElementById("routeGuideText");
+
+      const tabs = document.querySelectorAll(".route-tab-btn");
+      tabs.forEach(t => t.classList.remove("active"));
+      if (btnEl) btnEl.classList.add("active");
+
+      if (routeKey === "juarez") {
+        if (pathEl) pathEl.setAttribute("d", "M 220,240 L 250,120");
+        if (guideTextEl) guideTextEl.textContent = "Desde Av. Juárez: Subir por Avenida Teziutlán Sur hacia el norte (3 min en auto / 12 min a pie). Cruzar C. Huauchinango hasta la esquina con Tecamachalco (#46).";
+      } else if (routeKey === "recta") {
+        if (pathEl) pathEl.setAttribute("d", "M 60,70 Q 150,80 250,120");
+        if (guideTextEl) guideTextEl.textContent = "Desde Recta a Cholula: Tomar la salida lateral hacia La Paz. Incorporarse a Av. Teziutlán Norte en dirección sur. El local está a mano derecha en la esquina con Tecamachalco.";
+      } else if (routeKey === "reforma") {
+        if (pathEl) pathEl.setAttribute("d", "M 130,120 L 250,120");
+        if (guideTextEl) guideTextEl.textContent = "Desde Reforma Sur: Acceder por Calle Tecamachalco hacia el poniente hasta topar con Avenida Teziutlán Norte 46.";
+      }
+    }
+
+    // Toast de Feedback
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById("toastNotification");
+      if (!toast) return;
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2800);
+    }
+  </script>
+</body>
+</html>
